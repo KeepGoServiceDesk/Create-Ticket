@@ -103,10 +103,10 @@
     <form action="https://stratech.sysaidit.com:443/webformsubmit?pageEncoding=utf-8" 
           method="post" name="frm" onsubmit="return ValidateFrm();">
 
-      <!-- CAMPOS OCULTOS OBLIGATORIOS DE SYSAID -->
+      <!-- CAMPOS OCULTOS OBLIGATORIOS -->
       <input type="hidden" name="X_TOKEN_stratech" value="c5cdffdf-3656-428a-b22b-1487eaa0b1e9">
       <input type="hidden" name="accountID" value="stratech">
-      <input type="hidden" name="formID" value="55039d52:198e2dee0de:38fe">
+      <input type="hidden" name="formID" value="2b9d55b1:198f6df45b7:-5c37">
       <input type="hidden" name="reRoute" value="0">
       <input type="hidden" name="parentPageName" value="WebFormHTML.jsp?idx=0">
       <input type="hidden" name="paneMessage" value="">
@@ -118,11 +118,11 @@
       <input type="hidden" name="OK" value="">
 
       <!-- CAMPOS VISIBLES -->
-      <label for="firstName">Nombre</label>
-      <input type="text" id="firstName" name="firstName" maxlength="40">
+      <label for="firstName">Nombre *</label>
+      <input type="text" id="firstName" name="firstName" maxlength="40" required>
 
-      <label for="lastName">Apellidos</label>
-      <input type="text" id="lastName" name="lastName" maxlength="50">
+      <label for="lastName">Apellidos *</label>
+      <input type="text" id="lastName" name="lastName" maxlength="50" required>
 
       <label for="cellphone">Teléfono móvil *</label>
       <input type="text" id="cellphone" name="cellphone" maxlength="32" required>
@@ -140,26 +140,23 @@
 
   <!-- JS DE SYSAID -->
   <script src="https://stratech.sysaidit.com:443/calendar3.js" type="text/javascript"></script>
-  <script src="https://stratech.sysaidit.com:443/webformsubmit?getJS=YES&accountID=stratech&formID=55039d52:198e2dee0de:38fe" type="text/javascript"></script>
+  <script src="https://stratech.sysaidit.com:443/webformsubmit?getJS=YES&accountID=stratech&formID=2b9d55b1:198f6df45b7:-5c37" type="text/javascript"></script>
 
   <!-- VALIDACIÓN -->
   <script>
     function ValidateFrm() {
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
       const phone = document.getElementById("cellphone").value.trim();
       const title = document.getElementById("title").value.trim();
 
-      if (phone.length === 0) {
-        alert("Introduzca Teléfono móvil");
-        return false;
-      }
-      if (title.length === 0) {
-        alert("Introduzca un título para el ticket.");
-        return false;
-      }
+      if (!firstName) { alert("Introduzca Nombre"); return false; }
+      if (!lastName) { alert("Introduzca Apellidos"); return false; }
+      if (!phone) { alert("Introduzca Teléfono móvil"); return false; }
+      if (!title) { alert("Introduzca un título para el ticket."); return false; }
       return true;
     }
   </script>
 
 </body>
 </html>
-
