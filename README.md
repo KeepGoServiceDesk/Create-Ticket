@@ -6,7 +6,6 @@
   <title>Crear Ticket</title>
   <link rel="stylesheet" href="css/master.css">
 
-  <!-- Estilos modernos -->
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -101,15 +100,24 @@
   <div class="form-container">
     <h2>Crear Ticket</h2>
 
-    <form action="https://stratech.sysaidit.com:443/webformsubmit?pageEncoding=utf-8" method="post" name="frm" onsubmit="return ValidateFrm();">
-      <!-- Campos ocultos -->
-      <input type="hidden" name="X_TOKEN_stratech" value="a7687a9f-5934-4e36-a1d4-08ea7f4083cb">
+    <form action="https://stratech.sysaidit.com:443/webformsubmit?pageEncoding=utf-8" 
+          method="post" name="frm" onsubmit="return ValidateFrm();">
+
+      <!-- CAMPOS OCULTOS OBLIGATORIOS DE SYSAID -->
+      <input type="hidden" name="X_TOKEN_stratech" value="c5cdffdf-3656-428a-b22b-1487eaa0b1e9">
       <input type="hidden" name="accountID" value="stratech">
       <input type="hidden" name="formID" value="55039d52:198e2dee0de:38fe">
       <input type="hidden" name="reRoute" value="0">
+      <input type="hidden" name="parentPageName" value="WebFormHTML.jsp?idx=0">
+      <input type="hidden" name="paneMessage" value="">
+      <input type="hidden" name="paneType" value="">
+      <input type="hidden" name="paneBtnArrayButtons" value="">
+      <input type="hidden" name="panePreSubmitFunc" value="">
+      <input type="hidden" name="paneTextRow" value="">
+      <input type="hidden" name="centerPopup" value="">
       <input type="hidden" name="OK" value="">
 
-      <!-- Campos visibles -->
+      <!-- CAMPOS VISIBLES -->
       <label for="firstName">Nombre</label>
       <input type="text" id="firstName" name="firstName" maxlength="40">
 
@@ -130,7 +138,11 @@
     </div>
   </div>
 
-  <!-- Validación -->
+  <!-- JS DE SYSAID -->
+  <script src="https://stratech.sysaidit.com:443/calendar3.js" type="text/javascript"></script>
+  <script src="https://stratech.sysaidit.com:443/webformsubmit?getJS=YES&accountID=stratech&formID=55039d52:198e2dee0de:38fe" type="text/javascript"></script>
+
+  <!-- VALIDACIÓN -->
   <script>
     function ValidateFrm() {
       const phone = document.getElementById("cellphone").value.trim();
@@ -150,3 +162,4 @@
 
 </body>
 </html>
+
