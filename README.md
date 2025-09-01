@@ -125,10 +125,10 @@
       <button type="submit" class="btn-submit">📨 Enviar Ticket</button>
     </form>
 
-    <div class="footer">
-      <p>Powered by KeepGo <a href="></a></p>
-    </div>
-  </div>
+<div class="footer" style="text-align:center; font-family: Arial, sans-serif; font-size:14px;">
+  <p>Powered by <span style="color:blue; font-weight:bold;">KeepGo</span></p>
+</div>
+
 
   <script>
     function ValidateFrm(){
