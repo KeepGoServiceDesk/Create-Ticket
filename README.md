@@ -77,7 +77,7 @@ function gotoPage(pageID) {
 </script>
 <table>
 
-<form action="https://stratech.sysaidit.com:443/webformsubmit?pageEncoding=utf-8" method="post" name="frm">
+<form action="https://stratech.sysaidit.com/webformsubmit" method="post" name="frm">
 <input type="hidden" name="X_TOKEN_stratech"  id="X_TOKEN_stratech"   value="69487162-e8e9-449a-adc8-d064ca1ed969"><input type="hidden" name="accountID" value="stratech" />
 <input type="hidden" name="formID" value="64a1d9ed:1990633a44d:-5d6c" />
 <input type="hidden" name="reRoute" value="0"> <input type="hidden" name="parentPageName" value="WebFormHTML.jsp?idx=0" >
