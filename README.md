@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -24,7 +25,7 @@
       border-radius: 20px;
       box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
       width: 100%;
-      max-width: 550px;
+      max-width: 600px;
       animation: fadeIn 0.7s ease-in-out;
     }
 
@@ -44,7 +45,7 @@
       font-size: 14px;
     }
 
-    input[type="text"] {
+    input[type="text"], textarea {
       width: 100%;
       padding: 12px 14px;
       margin-bottom: 18px;
@@ -52,12 +53,17 @@
       border-radius: 12px;
       font-size: 15px;
       transition: 0.3s;
+      resize: vertical;
     }
 
-    input[type="text"]:focus {
+    input[type="text"]:focus, textarea:focus {
       border-color: #2980b9;
       box-shadow: 0px 0px 8px rgba(41,128,185,0.4);
       outline: none;
+    }
+
+    textarea {
+      min-height: 120px;
     }
 
     .btn-submit {
@@ -127,8 +133,11 @@
       <label for="cellphone">Teléfono móvil *</label>
       <input type="text" id="cellphone" name="cellphone" maxlength="32" required>
 
-      <label for="title">Título del ticket *</label>
+      <label for="title">Título *</label>
       <input type="text" id="title" name="title" maxlength="100" required>
+
+      <label for="desc">Descripción *</label>
+      <textarea id="desc" name="desc" required></textarea>
 
       <button type="submit" class="btn-submit">🚀 Enviar Ticket</button>
     </form>
@@ -149,14 +158,17 @@
       const lastName = document.getElementById("lastName").value.trim();
       const phone = document.getElementById("cellphone").value.trim();
       const title = document.getElementById("title").value.trim();
+      const desc = document.getElementById("desc").value.trim();
 
       if (!firstName) { alert("Introduzca Nombre"); return false; }
       if (!lastName) { alert("Introduzca Apellidos"); return false; }
       if (!phone) { alert("Introduzca Teléfono móvil"); return false; }
       if (!title) { alert("Introduzca un título para el ticket."); return false; }
+      if (!desc) { alert("Introduzca una descripción."); return false; }
       return true;
     }
   </script>
 
 </body>
 </html>
+
