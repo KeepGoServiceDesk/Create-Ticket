@@ -103,10 +103,10 @@
     <form action="https://stratech.sysaidit.com:443/webformsubmit?pageEncoding=utf-8" 
           method="post" name="frm" onsubmit="return ValidateFrm();">
 
-      <!-- CAMPOS OCULTOS OBLIGATORIOS -->
-      <input type="hidden" name="X_TOKEN_stratech" value="c5cdffdf-3656-428a-b22b-1487eaa0b1e9">
+      <!-- CAMPOS OCULTOS DE SYSAID -->
+      <input type="hidden" name="X_TOKEN_stratech" value="69487162-e8e9-449a-adc8-d064ca1ed969">
       <input type="hidden" name="accountID" value="stratech">
-      <input type="hidden" name="formID" value="2b9d55b1:198f6df45b7:-5c37">
+      <input type="hidden" name="formID" value="64a1d9ed:1990633a44d:-5d6c">
       <input type="hidden" name="reRoute" value="0">
       <input type="hidden" name="parentPageName" value="WebFormHTML.jsp?idx=0">
       <input type="hidden" name="paneMessage" value="">
@@ -140,7 +140,7 @@
 
   <!-- JS DE SYSAID -->
   <script src="https://stratech.sysaidit.com:443/calendar3.js" type="text/javascript"></script>
-  <script src="https://stratech.sysaidit.com:443/webformsubmit?getJS=YES&accountID=stratech&formID=2b9d55b1:198f6df45b7:-5c37" type="text/javascript"></script>
+  <script src="https://stratech.sysaidit.com:443/webformsubmit?getJS=YES&accountID=stratech&formID=64a1d9ed:1990633a44d:-5d6c" type="text/javascript"></script>
 
   <!-- VALIDACIÓN -->
   <script>
