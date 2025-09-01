@@ -1,103 +1,152 @@
-<html lang="es" xml:lang="es"dir="LTR" >
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
 <head>
-<META http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta http-equiv="Content-Language" content="es" />
-<link href="css/master.css" rel="stylesheet" type="text/css"/>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Language" content="es">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesa de Servicio - Levantar Ticket</title>
+  <link rel="stylesheet" href="css/master.css">
+
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 25px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #444;
+    }
+
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus, input[type="email"]:focus {
+      outline: none;
+      border-color: #4a90e2;
+      box-shadow: 0 0 4px rgba(74,144,226,0.4);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 12px;
+      background: #4a90e2;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: #357ab8;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 0.85rem;
+      text-align: center;
+      color: #777;
+    }
+
+    .footer a {
+      color: #4a90e2;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Levantar Ticket</h1>
+    <form action="https://stratech.sysaidit.com:443/webformsubmit?pageEncoding=utf-8" method="post" name="frm" onsubmit="return ValidateFrm();">
+      
+      <!-- Campos ocultos necesarios -->
+      <input type="hidden" name="X_TOKEN_stratech" value="b754c10a-bee6-4069-bfd2-6b2cd94a5ff9">
+      <input type="hidden" name="accountID" value="stratech">
+      <input type="hidden" name="formID" value="64a1d9ed:1990633a44d:-2a93">
+      <input type="hidden" name="reRoute" value="0">
 
-<style type="text/css">
+      <div class="form-group">
+        <label for="firstName">Nombre</label>
+        <input type="text" id="firstName" name="firstName" maxlength="40">
+      </div>
 
-</style>
+      <div class="form-group">
+        <label for="lastName">Apellidos</label>
+        <input type="text" id="lastName" name="lastName" maxlength="50">
+      </div>
 
-<script>
+      <div class="form-group">
+        <label for="cellphone">Teléfono móvil</label>
+        <input type="text" id="cellphone" name="cellphone" maxlength="32">
+      </div>
 
-var changes = false;
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" maxlength="64">
+      </div>
 
-function setChange(){
-     changes = true;
-     var obj=document.getElementById('OKBtn');
-     var obj1=document.getElementById('ApplyBtn');
-     var body=document.getElementById('OKBtn_body');
-     var body1=document.getElementById('ApplyBtn_body');
-}
+      <div class="form-group">
+        <label for="title">Título del reporte</label>
+        <input type="text" id="title" name="title" maxlength="100">
+      </div>
 
-var global_value;
+      <button type="submit" class="btn-submit">📨 Enviar Ticket</button>
+    </form>
 
-function checkChange(val) {
-     if (global_value.length!=val.length) {
-       setChange();
-       return;
-     }
-     for(i=0;i< global_value.length;i++) {
-       if(global_value.charAt(i) != val.charAt(i)) {
-         setChange();
-       }
-     }
-}
+    <div class="footer">
+      <p>Powered by KeepGo <a href="></a></p>
+    </div>
+  </div>
 
-function ValidateFrm(){
-if (document.frm.email.value.replace(/^\s*/, "").replace(/\s*$/, "").length==0) {
-  alert("Introduzca su dirección de correo electrónico.");
-  document.frm.email.focus();
-  return false;
-}
-if (document.frm.problem_type.value==="none") {
-  alert("Seleccione una categoría");
-  document.frm.problem_type.focus();
-  return false;
-}
-if (document.frm.subcategory.value==="none") {
-  alert("Seleccione una subcategoría");
-  document.frm.subcategory.focus();
-  return false;
-}
-if (document.frm.title.value.replace(/^\s*/, "").replace(/\s*$/, "").length==0) {
-  alert("Introduzca un título.");
-  document.frm.title.focus();
-  return false;
-}
-if (document.frm.desc.value.replace(/^\s*/, "").replace(/\s*$/, "").length==0) {
-  alert("Introduzca una descripción.");
-  document.frm.desc.focus();
-  return false;
-}
-     return true;
-}
+  <script>
+    function ValidateFrm(){
+      const nombre = document.getElementById("firstName").value.trim();
+      const apellidos = document.getElementById("lastName").value.trim();
+      const telefono = document.getElementById("cellphone").value.trim();
+      const correo = document.getElementById("email").value.trim();
+      const titulo = document.getElementById("title").value.trim();
 
-function ExecuteOK(){
-    if (! ValidateFrm())
-      return;
-    document.frm.OK.value = "OK";
-    document.frm.submit();
-}
+      if(!nombre){ alert("Introduzca su nombre"); return false; }
+      if(!apellidos){ alert("Introduzca sus apellidos"); return false; }
+      if(!telefono){ alert("Introduzca un teléfono móvil"); return false; }
+      if(!correo){ alert("Introduzca su correo electrónico"); return false; }
+      if(!titulo){ alert("Introduzca un título para el ticket"); return false; }
 
-function gotoPage(pageID) {
-}
-</script>
-<table>
-
-<form action="https://stratech.sysaidit.com:443/webformsubmit?pageEncoding=utf-8" method="post" name="frm">
-<input type="hidden" name="X_TOKEN_stratech"  id="X_TOKEN_stratech"   value="69487162-e8e9-449a-adc8-d064ca1ed969"><input type="hidden" name="accountID" value="stratech" />
-<input type="hidden" name="formID" value="64a1d9ed:1990633a44d:-33fe" />
-<input type="hidden" name="reRoute" value="0"> <input type="hidden" name="parentPageName" value="WebFormHTML.jsp?idx=0" >
-<input type="hidden" name="paneMessage" value="">
-<input type="hidden" name="paneType" value="">
-<input type="hidden" name="paneBtnArrayButtons" value="">
-<input type="hidden" name="panePreSubmitFunc" value="">
-<input type="hidden" name="paneTextRow" value=""><input type="hidden" name="centerPopup" value=""/><script src="https://stratech.sysaidit.com:443/calendar3.js" type="text/javascript" language="javascript"></script>
-<script type="text/javascript" language="javascript" src="https://stratech.sysaidit.com:443/webformsubmit?getJS=YES&accountID=stratech&formID=64a1d9ed:1990633a44d:-33fe" >
-</script>
-  <tr><td colspan="2">&nbsp;</td></tr>  <tr>    <td class="Form_Ctrl_Label" >&nbsp;&nbsp;&nbsp;&nbsp;Correo electrónico</td><td>&nbsp;&nbsp;<input name="email" type="text" onFocus="global_value=this.value" onChange="setChange();" onKeyUp="checkChange(this.value)" value="" size="50" maxlength="64"></td>
-  </tr>  <tr><td colspan="2">&nbsp;</td></tr>  <tr>    <td class="Form_Ctrl_Label" >&nbsp;&nbsp;&nbsp;&nbsp;Nombre</td><td>&nbsp;&nbsp;<input name="firstName" type="text" onFocus="global_value=this.value" onChange="setChange();" onKeyUp="checkChange(this.value)" value="" size="40" maxlength="40"></td>
-  </tr>  <tr><td colspan="2">&nbsp;</td></tr>  <tr>    <td class="Form_Ctrl_Label" >&nbsp;&nbsp;&nbsp;&nbsp;Apellidos</td><td>&nbsp;&nbsp;<input name="lastName" type="text" onFocus="global_value=this.value" onChange="setChange();" onKeyUp="checkChange(this.value)" value="" size="50" maxlength="50"></td>
-  </tr>  <tr><td colspan="2">&nbsp;</td></tr>  <tr>    <td class="Form_Ctrl_Label" >&nbsp;&nbsp;&nbsp;&nbsp;Categoría</td><td class="Form_Ctrl_Label">&nbsp;&nbsp;<select  name="problem_type"  onChange="setChange();updateSubCategory();">  <option value="none">Seleccione una categoría</option><option value="ATV MOSTRADOR" >ATV MOSTRADOR</option><option value="ATV SOM" >ATV SOM</option><option value="BANNER" >BANNER</option><option value="BANNER FDA" >BANNER FDA</option><option value="CLINIQUE" >CLINIQUE</option><option value="EN ESPERA" >EN ESPERA</option><option value="FS - PANTALLAS" >FS - PANTALLAS</option><option value="GONDOLA BEBES" >GONDOLA BEBES</option><option value="GONDOLA EMOTIVA" >GONDOLA EMOTIVA</option><option value="GONDOLA PREVENTIVA" >GONDOLA PREVENTIVA</option><option value="IOT - TELCEL" >IOT - TELCEL</option><option value="MARQUESINAS" >MARQUESINAS</option><option value="MEGA PANTALLAS" >MEGA PANTALLAS</option><option value="MONEX - BOTONERA" >MONEX - BOTONERA</option><option value="MONEX - CLICK SHARE" >MONEX - CLICK SHARE</option><option value="MONEX - LIENZO" >MONEX - LIENZO</option><option value="MONEX - PANTALLA DE TV" >MONEX - PANTALLA DE TV</option><option value="MONEX - PLAYERS COMUNICACIÓN INTERNA" >MONEX - PLAYERS COMUNICACIÓN INTERNA</option><option value="MONEX - PROYECTOR" >MONEX - PROYECTOR</option><option value="MONEX - SKY" >MONEX - SKY</option><option value="MONEX - TOTAL PLAY" >MONEX - TOTAL PLAY</option><option value="MONEX - VIDEOCONFERENCIAS" >MONEX - VIDEOCONFERENCIAS</option><option value="MONITOR" >MONITOR</option><option value="NUC" >NUC</option><option value="OPPO - TELCEL" >OPPO - TELCEL</option><option value="PANTALLA" >PANTALLA</option><option value="PLAYER  X10" >PLAYER  X10</option><option value="PLAYER BPX0" >PLAYER BPX0</option><option value="PLAYER DN" >PLAYER DN</option><option value="PLAYER DS" >PLAYER DS</option><option value="PLAYER SP0" >PLAYER SP0</option><option value="PLAYER ST" >PLAYER ST</option><option value="PLAYER SX" >PLAYER SX</option><option value="PLAYER X9" >PLAYER X9</option><option value="PLAYER X9W" >PLAYER X9W</option><option value="SBB" >SBB</option><option value="SERVICIOS DE TI (OFICINAS CORPORATIVAS)" >SERVICIOS DE TI (OFICINAS CORPORATIVAS)</option><option value="SERVICIOS DE TI PARA PUNTOS DE VENTA (POS)" >SERVICIOS DE TI PARA PUNTOS DE VENTA (POS)</option><option value="SMART BOX" >SMART BOX</option><option value="TURNOS - TELCEL" >TURNOS - TELCEL</option><option value="VIDEOWALL" >VIDEOWALL</option><option value="VIDEOWALL - TELCEL" >VIDEOWALL - TELCEL</option><option value="WALL BEBES" >WALL BEBES</option><option value="WALL EMOTIVO" >WALL EMOTIVO</option></select>&nbsp;<select name="subcategory" onChange="setChange();updateThirdLevelCategory();">  <option value="none">Seleccione una subcategoría</option><option value=" " > </option></select>&nbsp;<select name="thirdLevelCategory" onChange="setChange();thirdLevelChage();">  <option value="none">Seleccionar categoría de tercer nivel</option></select>
-<input type="hidden" name="autoDescriptionTemplate" value="N">
-</td>  </tr>  <tr><td colspan="2">&nbsp;</td></tr>  <tr>    <td class="Form_Ctrl_Label" >&nbsp;&nbsp;&nbsp;&nbsp;Título</td><td>&nbsp;&nbsp;<input name="title" type="text" onFocus="global_value=this.value" onChange="setChange();" onKeyUp="checkChange(this.value)" value="" size="50" maxlength="100">
-</td>  </tr>  <tr><td colspan="2">&nbsp;</td></tr>  <tr>    <td class="Form_Ctrl_Label" >&nbsp;&nbsp;&nbsp;&nbsp;Descripción</td><td class="Form_Ctrl_Fields FieldBox">&nbsp;&nbsp;<textarea name="desc" cols="120" rows="5" id="desc" onchange="setChangeDesc(this);setChange(this);" onKeyUp="checkChangeDesc(this.value,this);checkChange(this.value,this);" onFocus="global_value=this.value" ></textarea>
-</td>  </tr>  <tr>    <td colspan="2">&nbsp;</td>  </tr>  <tr >    <td colspan="1">&nbsp;      <table  class="Button3Parts" tabIndex="0" onclick="ExecuteOK();"><tbody class="Purple"><tr class=" - state - "><td class="ButtonFirst">&nbsp;</td><td class="ButtonLabel"><span>Enviar</span></td><td class="ButtonLast">&nbsp;</td></tr></tbody></table>           <input name="OK" type="hidden" value =""></td>  </tr>  <tr>    <td colspan="2">&nbsp;<br><p>&nbsp;&nbsp;&nbsp;&nbsp;Powered by SysAid <a href="http://www.ilient.com">Help Desk Software</a>.</p>  </td></tr>
-</form>
-
-</table>
+      return true;
+    }
+  </script>
 </body>
 </html>
