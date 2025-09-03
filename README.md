@@ -113,28 +113,28 @@
 
       <div class="form-group">
         <label for="firstName">Nombre</label>
-        <input type="text" id="firstName" name="firstName" maxlength="40" onfocus="global_value=this.value" onkeyup="checkChange(this.value)" onchange="setChange();">
+        <input type="text" id="firstName" name="firstName" maxlength="40" required>
       </div>
 
       <div class="form-group">
         <label for="lastName">Apellidos</label>
-        <input type="text" id="lastName" name="lastName" maxlength="50" onfocus="global_value=this.value" onkeyup="checkChange(this.value)" onchange="setChange();">
+        <input type="text" id="lastName" name="lastName" maxlength="50" required>
       </div>
 
       <div class="form-group">
         <label for="cellphone">Teléfono móvil</label>
-        <input type="text" id="cellphone" name="cellphone" maxlength="32" onfocus="global_value=this.value" onkeyup="checkChange(this.value)" onchange="setChange();">
+        <input type="text" id="cellphone" name="cellphone" maxlength="32" required>
       </div>
 
       <div class="form-group">
         <label for="title">Título del reporte</label>
-        <input type="text" id="title" name="title" maxlength="100" onfocus="global_value=this.value" onkeyup="checkChange(this.value)" onchange="setChange();">
+        <input type="text" id="title" name="title" maxlength="100" required>
       </div>
 
       <div class="form-group">
         <label for="CustomColumn449sr">Mesa de primer nivel</label>
-        <select id="CustomColumn449sr" name="CustomColumn449sr">
-          <option value="0" selected>Seleccione un valor</option>
+        <select id="CustomColumn449sr" name="CustomColumn449sr" required>
+          <option value="" disabled selected>Seleccione un valor</option>
           <option value="1">MESA ON</option>
           <option value="2">MESA FDA</option>
           <option value="3">MESA FS</option>
@@ -150,36 +150,18 @@
   </div>
 
   <script>
-    var changes = false;
-    var global_value;
-
-    function setChange(){
-      changes = true;
-    }
-
-    function checkChange(val) {
-      if (global_value.length !== val.length) {
-        setChange();
-        return;
-      }
-      for (let i = 0; i < global_value.length; i++) {
-        if (global_value.charAt(i) !== val.charAt(i)) {
-          setChange();
-          break;
-        }
-      }
-    }
-
     function ValidateFrm() {
       const nombre = document.getElementById("firstName").value.trim();
       const apellidos = document.getElementById("lastName").value.trim();
       const telefono = document.getElementById("cellphone").value.trim();
       const titulo = document.getElementById("title").value.trim();
+      const mesa = document.getElementById("CustomColumn449sr").value;
 
       if (!nombre) { alert("Introduzca Nombre"); return false; }
       if (!apellidos) { alert("Introduzca Apellidos"); return false; }
       if (!telefono) { alert("Introduzca Teléfono móvil"); return false; }
       if (!titulo) { alert("Introduzca un título."); return false; }
+      if (!mesa) { alert("Seleccione una mesa de primer nivel."); return false; }
 
       return true;
     }
