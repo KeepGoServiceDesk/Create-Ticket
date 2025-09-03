@@ -96,8 +96,8 @@
           name="frm" 
           onsubmit="return ValidateFrm();">
       
-      <!-- Campos ocultos de SysAid -->
-      <input type="hidden" name="X_TOKEN_stratech" value="824d1f26-ba8b-4905-be83-29408f94328f">
+      <!-- Campos ocultos requeridos por SysAid -->
+      <input type="hidden" name="X_TOKEN_stratech" value="8ac7a677-c0ea-40b9-8226-59a2aa4f3b55">
       <input type="hidden" name="accountID" value="stratech">
       <input type="hidden" name="formID" value="64a1d9ed:1990633a44d:-2a93">
       <input type="hidden" name="reRoute" value="0">
@@ -109,21 +109,17 @@
       <input type="hidden" name="paneTextRow" value="">
       <input type="hidden" name="centerPopup" value="">
       <input type="hidden" name="OK" value="">
-      <input type="hidden" name="email" id="email" value="">
+      <input type="hidden" name="email" id="email" value="name@sth.com">
 
+      <!-- Campos visibles -->
       <div class="form-group">
-        <label for="firstName">Nombre</label>
-        <input type="text" id="firstName" name="firstName" maxlength="40" required>
+        <label for="CustomColumn267sr">Usuario que Reporta</label>
+        <input type="text" id="CustomColumn267sr" name="CustomColumn267sr" maxlength="50" required>
       </div>
 
       <div class="form-group">
-        <label for="lastName">Apellidos</label>
-        <input type="text" id="lastName" name="lastName" maxlength="50" required>
-      </div>
-
-      <div class="form-group">
-        <label for="cellphone">Teléfono móvil</label>
-        <input type="text" id="cellphone" name="cellphone" maxlength="32" required>
+        <label for="CustomColumn69sr">Número de Teléfono</label>
+        <input type="text" id="CustomColumn69sr" name="CustomColumn69sr" maxlength="50" required>
       </div>
 
       <div class="form-group">
@@ -151,15 +147,13 @@
 
   <script>
     function ValidateFrm() {
-      const nombre = document.getElementById("firstName").value.trim();
-      const apellidos = document.getElementById("lastName").value.trim();
-      const telefono = document.getElementById("cellphone").value.trim();
+      const usuario = document.getElementById("CustomColumn267sr").value.trim();
+      const telefono = document.getElementById("CustomColumn69sr").value.trim();
       const titulo = document.getElementById("title").value.trim();
       const mesa = document.getElementById("CustomColumn449sr").value;
 
-      if (!nombre) { alert("Introduzca Nombre"); return false; }
-      if (!apellidos) { alert("Introduzca Apellidos"); return false; }
-      if (!telefono) { alert("Introduzca Teléfono móvil"); return false; }
+      if (!usuario) { alert("Introduzca el usuario que reporta."); return false; }
+      if (!telefono) { alert("Introduzca un número de teléfono."); return false; }
       if (!titulo) { alert("Introduzca un título."); return false; }
       if (!mesa) { alert("Seleccione una mesa de primer nivel."); return false; }
 
@@ -172,7 +166,3 @@
       document.frm.submit();
     }
   </script>
-
-  <!-- Scripts externos de SysAid -->
-  <script src="https://stratech.sysaidit.com:443/calendar3.js" type="text/javascript"></script>
-  <script src="https://stratech.sysaidit.com:443/webformsubmit?getJS=YES&accountID=stratech&formID=64a1d9ed:1990633a44d:-2a93" type="text/javascript"></script>
