@@ -15,7 +15,7 @@
     }
 
     .container {
-      max-width: 600px;
+      max-width: 650px;
       margin: 40px auto;
       padding: 25px;
       background: #fff;
@@ -25,7 +25,7 @@
 
     h1 {
       text-align: center;
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       margin-bottom: 20px;
       color: #333;
     }
@@ -41,7 +41,7 @@
       color: #444;
     }
 
-    input[type="text"] {
+    input[type="text"], select {
       width: 100%;
       padding: 10px;
       border: 1px solid #ccc;
@@ -50,7 +50,7 @@
       transition: border-color 0.3s;
     }
 
-    input:focus {
+    input:focus, select:focus {
       outline: none;
       border-color: #4a90e2;
       box-shadow: 0 0 4px rgba(74,144,226,0.4);
@@ -80,9 +80,9 @@
       color: #777;
     }
 
-    .footer a {
-      color: #4a90e2;
-      text-decoration: none;
+    .footer span {
+      color: blue;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -91,10 +91,13 @@
   <div class="container">
     <h1>Levantar Ticket</h1>
 
-    <form action="https://stratech.sysaidit.com:443/webformsubmit?pageEncoding=utf-8" method="post" name="frm" onsubmit="return ValidateFrm();">
+    <form action="https://stratech.sysaidit.com:443/webformsubmit?pageEncoding=utf-8" 
+          method="post" 
+          name="frm" 
+          onsubmit="return ValidateFrm();">
       
-      <!-- Campos ocultos -->
-      <input type="hidden" name="X_TOKEN_stratech" value="e667e799-a5ab-4a19-827c-dd3a505f7030">
+      <!-- Campos ocultos de SysAid -->
+      <input type="hidden" name="X_TOKEN_stratech" value="824d1f26-ba8b-4905-be83-29408f94328f">
       <input type="hidden" name="accountID" value="stratech">
       <input type="hidden" name="formID" value="64a1d9ed:1990633a44d:-2a93">
       <input type="hidden" name="reRoute" value="0">
@@ -128,18 +131,29 @@
         <input type="text" id="title" name="title" maxlength="100" onfocus="global_value=this.value" onkeyup="checkChange(this.value)" onchange="setChange();">
       </div>
 
-      <button type="submit" class="btn-submit">📨 Enviar Ticket</button>
+      <div class="form-group">
+        <label for="CustomColumn449sr">Mesa de primer nivel</label>
+        <select id="CustomColumn449sr" name="CustomColumn449sr">
+          <option value="0" selected>Seleccione un valor</option>
+          <option value="1">MESA ON</option>
+          <option value="2">MESA FDA</option>
+          <option value="3">MESA FS</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn-submit" onclick="ExecuteOK(); return false;">📨 Enviar Ticket</button>
     </form>
 
-<div class="footer" style="text-align:center; font-family: Arial, sans-serif; font-size:14px;">
-  <p>Powered by <span style="color:blue; font-weight:bold;">KeepGo</span></p>
-</div>
+    <div class="footer">
+      <p>Powered by <span>KeepGo</span></p>
+    </div>
+  </div>
 
   <script>
     var changes = false;
     var global_value;
 
-    function setChange() {
+    function setChange(){
       changes = true;
     }
 
@@ -162,28 +176,18 @@
       const telefono = document.getElementById("cellphone").value.trim();
       const titulo = document.getElementById("title").value.trim();
 
-      if (!nombre) {
-        alert("Introduzca Nombre");
-        document.getElementById("firstName").focus();
-        return false;
-      }
-      if (!apellidos) {
-        alert("Introduzca Apellidos");
-        document.getElementById("lastName").focus();
-        return false;
-      }
-      if (!telefono) {
-        alert("Introduzca Teléfono móvil");
-        document.getElementById("cellphone").focus();
-        return false;
-      }
-      if (!titulo) {
-        alert("Introduzca un título.");
-        document.getElementById("title").focus();
-        return false;
-      }
+      if (!nombre) { alert("Introduzca Nombre"); return false; }
+      if (!apellidos) { alert("Introduzca Apellidos"); return false; }
+      if (!telefono) { alert("Introduzca Teléfono móvil"); return false; }
+      if (!titulo) { alert("Introduzca un título."); return false; }
 
       return true;
+    }
+
+    function ExecuteOK(){
+      if (!ValidateFrm()) return;
+      document.frm.OK.value = "OK";
+      document.frm.submit();
     }
   </script>
 
